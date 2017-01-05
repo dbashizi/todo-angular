@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en-US" ng-app="TIYAngularApp">
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="js/tiy-ng-controller.js"></script>
+<body ng-controller="SampleController">
+
+{{! changing the mustache delimiter so it doesn't conflict with  }}
+{{! the default angularjs delimeters - https://mustache.github.io/mustache.5.html for more info  }}
+{{=<% %>=}}
+
+<div style="position: relative; float: left; width: 100%; padding: 20px;">
+    <h1>Hello {{name}} - I'll email you at {{userEmail}}</h1>
+
+    <p>Name : <input type="text" ng-model="name"></p>
+
+    {{name}} is trying to figure things out ... ({{userEmail}})<br/><br/>
+
+
+    <div>
+        <h2>Todo List</h2>
+        <ul>
+            <li ng-repeat="todo in todos">
+                {{todo.text}}- {{todo.done}}
+                <button ng-click="deleteTodo(todo.id)">delete</button>
+                <button ng-click="toggleTodo(todo.text)">toggle</button>
+            </li>
+        </ul>
+    </div>
+
+    <div>
+        <h1>Enter new Todo information</h1>
+        <span>Todo text: <input type="text" ng-model="newTodo.text"/></span>
+        <span>  <input type="button" ng-click="addTodo()" value="Create new Todo"/></span>
+
+    </div>
+
+
+    <input type="button" ng-click="getTodos()" value="Refresh ToDo Data"/>
+
+    <input type="button" ng-click="initTodos()" value="Back to default values"/>
+
+</div>
+
+</body>
+</html>
