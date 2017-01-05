@@ -50,7 +50,7 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String getPassword() {
+    private String getPassword() {
         return password;
     }
 

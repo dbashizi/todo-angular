@@ -50,7 +50,7 @@ public class TodoJSONController {
         books.add(new Book(false, LocalDateTime.now(), "iOS for Dummies", "TJ (who else?)", "Technical", null));
         books.add(new Book(false, LocalDateTime.now(), "Harry Potter and the something", "JK Rowling", "Fantasy", null));
         books.add(new Book(false, LocalDateTime.now(), "String Theory", "Foster Wallace", "Biography", null));
-        books.add(new Book(false, LocalDateTime.now(), "100 years of solitude", "Gabriel Garcia Marquez", "Fiction", null));
+        books.add(new Book(false, LocalDateTime.now(), "100 years of solitude", "Gabriel Garcia Marquez", "Fiction", user));
         return books;
     }
 

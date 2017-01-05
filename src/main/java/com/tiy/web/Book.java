@@ -38,7 +38,7 @@ public class Book {
         this.checkedOut = checkedOut;
     }
 
-    public LocalDateTime getDueDate() {
+    private LocalDateTime getDueDate() {
         return dueDate;
     }
 
