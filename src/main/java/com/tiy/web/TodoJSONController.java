@@ -55,10 +55,10 @@ public class TodoJSONController {
     }
 
     @RequestMapping(path = "/get-books-by-user.json", method = RequestMethod.POST)
-    public ArrayList<Book> getBooksByUser(String username) {
+    public ArrayList<Book> getBooksByUser(@RequestBody UserRequestContainer userRequest) {
         ArrayList<Book> books = new ArrayList<Book>();
-        if (username.equals("dev@tiy.com")) {
-            User user = new User("dev@tiy.com", "Master", "Developer", "testpassword", 7000);
+        if (userRequest.getUsername().equals("dev@tiy.com")) {
+            User user = new User(userRequest.getUsername(), "Master", "Developer", "testpassword", 7000);
             books.add(new Book(false, LocalDateTime.now(), "100 years of solitude", "Gabriel Garcia Marquez", "Fiction", user));
         } else {
             books.add(new Book(false, LocalDateTime.now(), "iOS for Dummies", "TJ (who else?)", "Technical", null));
@@ -108,4 +108,16 @@ public class TodoJSONController {
         return todos;
     }
 
+}
+
+class UserRequestContainer {
+    String username;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 }
