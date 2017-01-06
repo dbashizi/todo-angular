@@ -54,6 +54,20 @@ public class TodoJSONController {
         return books;
     }
 
+    @RequestMapping(path = "/get-books-by-user.json", method = RequestMethod.POST)
+    public ArrayList<Book> getBooksByUser(String username) {
+        ArrayList<Book> books = new ArrayList<Book>();
+        if (username.equals("dev@tiy.com")) {
+            User user = new User("dev@tiy.com", "Master", "Developer", "testpassword", 7000);
+            books.add(new Book(false, LocalDateTime.now(), "100 years of solitude", "Gabriel Garcia Marquez", "Fiction", user));
+        } else {
+            books.add(new Book(false, LocalDateTime.now(), "iOS for Dummies", "TJ (who else?)", "Technical", null));
+            books.add(new Book(false, LocalDateTime.now(), "Harry Potter and the something", "JK Rowling", "Fantasy", null));
+            books.add(new Book(false, LocalDateTime.now(), "String Theory", "Foster Wallace", "Biography", null));
+        }
+        return books;
+    }
+
     @RequestMapping(path = "/toggleTodo.json", method = RequestMethod.GET)
     public ArrayList<ToDoItem> toggleTodo(String todoText) throws SQLException {
         System.out.println("toggling todo with text " + todoText);
